@@ -28,15 +28,10 @@ const counter = document.querySelector('.main__contador');
 function getRandomNumber(max) {
     return Math.ceil(Math.random() * max);
 }
-// Anda, chacho, píntame en la consola un número random hasta 100;
-
-
 
 let acc = 0;
 
 btnMain.addEventListener('click', handlerButton);
-
-const everyValue = inputMain.value;
 
 const numberBig = 'Demasiado alto';
 const numberLow = 'Demasiado bajo';
@@ -44,28 +39,27 @@ const numberWinner = '¡HAS GANADO, CAMPEONA!';
 
 function handlerButton(event) {
     event.preventDefault();
-    //const parrfInner = parrafMain.innerHTML;
-
-    //parrafMain.innerHTML = inputMain.value;
+    
+    const everyValue = inputMain.value;
 
     // for (let i = 0; i < btnMain; i++) {
     //     acc += 1;
     //     counter.innerHTML = acc;        
         
     // }
-    const randomNumber = getRandomNumber(100);
-    console.log('Número aleatorio ' , randomNumber);
+    const randomNumber = getRandomNumber(5);
 
-    if(everyValue < randomNumber) {
-        parrafMain.innerHTML = numberLow;
+    if(everyValue === randomNumber) {
+        numberWinner;
 
     } else if(everyValue > randomNumber) {
 
         parrafMain.innerHTML = numberBig;
         
-    } else {
-        numberWinner;
+    } else if(everyValue < randomNumber) {
+        parrafMain.innerHTML = numberLow;
     }
-}
 
+    console.log('Número aleatorio ' , randomNumber);
+}
 
