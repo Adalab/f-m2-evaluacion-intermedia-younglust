@@ -39,15 +39,17 @@ const numberWinner = '¡HAS GANADO, CAMPEONA!';
 
 function handlerButton(event) {
     event.preventDefault();
-    
+
+    // for (let i = 0; i < handlerButton; i++) {
+    //     acc += 1;
+    //     counter.innerHTML = acc;
+    //     console.log('counter ' , acc);        
+    // };
+
+
     const everyValue = inputMain.value;
 
-    // for (let i = 0; i < btnMain; i++) {
-    //     acc += 1;
-    //     counter.innerHTML = acc;        
-        
-    // }
-    const randomNumber = getRandomNumber(5);
+    const randomNumber = getRandomNumber(100);
 
     if(everyValue === randomNumber) {
         numberWinner;
