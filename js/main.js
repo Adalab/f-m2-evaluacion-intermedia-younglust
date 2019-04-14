@@ -1,5 +1,5 @@
 "use strict";
-//Juego de adivinar número random. Da pistas si el número es algo o bajo
+//Juego de adivinar número random. Da pistas si el número es alto o bajo
 const inputMain = document.querySelector(".main__input");
 const btnMain = document.querySelector(".main__button-try");
 const parrafMain = document.querySelector(".main__parraf");
@@ -11,32 +11,39 @@ const feedbackTextGame = {
   low: "Demasiado bajo",
   winner: "¡HAS GANADO, CAMPEONA!"
 };
+//looping into objects
+const contentFeedbackText = Object.values(feedbackTextGame);
 let acc = 0;
+const randomNumber = getRandomNumber(100);
 
-// Función que genera un número aleatorio hasta un máximo dado
+// randomm number untill max
 function getRandomNumber(max) {
   return Math.ceil(Math.random() * max);
 }
-const randomNumber = getRandomNumber(100);
+
+//get feedback into html
+function getFeedbackTexts(index) {
+  parrafMain.innerHTML = contentFeedbackText[index];
+};
 
 //counter
 function startCounter() {
   acc += 1;
   counter.innerHTML = acc;
-}
+};
 
 //feedback
 function feedbackGame() {
   const everyValue = parseInt(inputMain.value);
 
   if (everyValue === randomNumber) {
-    parrafMain.innerHTML = feedbackTextGame.winner;
+    getFeedbackTexts(3);
 
   } else if (everyValue > randomNumber) {
-    parrafMain.innerHTML = feedbackTextGame.big;
+    getFeedbackTexts(1);;
 
   } else if (everyValue < randomNumber) {
-    parrafMain.innerHTML = feedbackTextGame.low;
+    getFeedbackTexts(2);
   }
 }
 
@@ -45,14 +52,15 @@ function handlerButton(event) {
   feedbackGame();
   startCounter();
   console.log("Número aleatorio ", randomNumber);  
-}
+};
 btnMain.addEventListener("click", handlerButton);
 
 //reset button
-function resetButton() {
+function resetButton(event) {
+  event.preventDefault();
   inputMain.value = "";
-  parrafMain.innerHTML = feedbackTextGame.default;
+  getFeedbackTexts(0);
   counter.innerHTML = 0;
   acc = 0;
-}
+};
 resetButon.addEventListener("click", resetButton);
