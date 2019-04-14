@@ -1,5 +1,6 @@
 "use strict";
 //Juego de adivinar número random. Da pistas si el número es alto o bajo
+
 const inputMain = document.querySelector(".main__input");
 const btnMain = document.querySelector(".main__button-try");
 const parrafMain = document.querySelector(".main__parraf");
@@ -40,7 +41,7 @@ function feedbackGame() {
     getFeedbackTexts(3);
 
   } else if (everyValue > randomNumber) {
-    getFeedbackTexts(1);;
+    getFeedbackTexts(1);
 
   } else if (everyValue < randomNumber) {
     getFeedbackTexts(2);
